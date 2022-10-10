@@ -1,5 +1,5 @@
 const prompt = require("prompt-sync")();
-console.log("")
+console.log("1. RandomLargestSmallest, 2. RandomLargestSmallestSort, 3. PrimeFactors, 4. AddsToZero")
     let choice = parseInt(prompt("Enter The Choice : "))
 
 switch (choice) {
@@ -11,6 +11,9 @@ switch (choice) {
       break;
     case 3:
       PrimeFactors();
+      break;
+    case 4:
+      AddsToZero();
       break;
 }
 
@@ -75,7 +78,6 @@ function RandomLargestSmallestSorting() {
 }
 
 function PrimeFactors() {
-    const prompt = require("prompt-sync")();
     let count = 0;
     let numberIsPrime = 0;
     let result = [];
@@ -97,4 +99,17 @@ function PrimeFactors() {
         }
     }
     console.log(result);
+}
+
+function AddsToZero() {
+let a = parseInt(prompt("Enter First Number"));
+let b = parseInt(prompt("Enter Second Number"));
+let c = parseInt(prompt("Enter Third Number"));
+let sum = a + b + c;
+if(sum == 0) {
+    console.log("Triplets are : " + a + " + " + b + " + " + c + " = 0")
+}
+else {
+    console.log("Triplets don't add to zero")
+}
 }

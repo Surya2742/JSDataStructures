@@ -1,6 +1,6 @@
 const prompt = require("prompt-sync")();
 console.log("1. RandomLargestSmallest, 2. RandomLargestSmallestSort, 3. PrimeFactors, 4. AddsToZero, 5. RepeatingNumber, " +
-"6. DiceGame");
+    "6. DiceGame, 7. BirthDayInSameMonth");
 let choice = parseInt(prompt("Enter The Choice : "))
 
 switch (choice) {
@@ -21,6 +21,9 @@ switch (choice) {
         break;
     case 6:
         DiceGame();
+        break;
+    case 7:
+        SameBirthDay();
         break;
 }
 
@@ -173,10 +176,41 @@ function DiceGame() {
     console.log("\nDie Map : ");
     diceCountMap.forEach((values, keys) => {
         console.log("Value On Dice : " + keys + " , No. Of Times : " + values)
-        if(minCount == values) {
+        if (minCount == values) {
             minNumbers[countForArray] = keys;
             countForArray++;
         }
     })
     console.log("\nNumber with Min Count : " + minNumbers + "\nNumber with Max Count : " + numberWithMaxCount);
+}
+
+function getMonthName(monthNumber) {
+    const date = new Date();
+    date.setMonth(monthNumber - 1);
+    return date.toLocaleString('en-US', { month: 'long' });
+}
+
+function SameBirthDay() {
+    let monthsMap = new Map([
+        [1, 0],
+        [2, 0],
+        [3, 0],
+        [4, 0],
+        [5, 0],
+        [6, 0],
+        [7, 0],
+        [8, 0],
+        [9, 0],
+        [10, 0],
+        [11, 0],
+        [12, 0]
+    ]);
+    for (let i = 1; i <= 50; i++) {
+        let randomMonth = Math.floor(Math.random() * 12 + 1);
+        let count = monthsMap.get(randomMonth);
+        monthsMap.set(randomMonth, count + 1);
+    }
+    monthsMap.forEach((values, keys) => {
+        console.log(values + " Person have BirthDay in the month of " + getMonthName(keys));
+    })
 }

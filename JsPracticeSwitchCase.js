@@ -1,5 +1,5 @@
 const prompt = require("prompt-sync")();
-console.log("1. RandomLargestSmallest, 2. RandomLargestSmallestSort, 3. PrimeFactors, 4. AddsToZero")
+console.log("1. RandomLargestSmallest, 2. RandomLargestSmallestSort, 3. PrimeFactors, 4. AddsToZero, 5. RepeatingNumber")
     let choice = parseInt(prompt("Enter The Choice : "))
 
 switch (choice) {
@@ -14,6 +14,9 @@ switch (choice) {
       break;
     case 4:
       AddsToZero();
+      break;
+    case 5:
+      RepeatingNumber();
       break;
 }
 
@@ -102,14 +105,29 @@ function PrimeFactors() {
 }
 
 function AddsToZero() {
-let a = parseInt(prompt("Enter First Number"));
-let b = parseInt(prompt("Enter Second Number"));
-let c = parseInt(prompt("Enter Third Number"));
-let sum = a + b + c;
-if(sum == 0) {
-    console.log("Triplets are : " + a + " + " + b + " + " + c + " = 0")
+    let a = parseInt(prompt("Enter First Number"));
+    let b = parseInt(prompt("Enter Second Number"));
+    let c = parseInt(prompt("Enter Third Number"));
+    let sum = a + b + c;
+    if(sum == 0) {
+        console.log("Triplets are : " + a + " + " + b + " + " + c + " = 0")
+    }
+    else {
+        console.log("Triplets don't add to zero")
+    }
 }
-else {
-    console.log("Triplets don't add to zero")
-}
+
+function RepeatingNumber() {
+    let count = 0;
+    const number = [];
+    let start = parseInt(prompt("Starting Range : "));
+    let end = parseInt(prompt("Ending Range : "));
+    while ( start <= end ) {
+        if ( start % 11 == 0) {
+        number [count] = start;
+        count++;
+        }
+    start++;
+    }
+    console.log('Repeating numbers are: ' + number);
 }
